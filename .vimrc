@@ -28,6 +28,20 @@ set smartindent
 set showmatch
 "set listchars=space:_,tab:>~ list
 set noexpandtab
-set shiftwidth=8
-set tabstop=8
+set shiftwidth=4
+set tabstop=4
 set softtabstop=0
+
+call plug#begin('~/.vim/plugged')
+
+"Plug 'git@github.com:Valloric/YouCompleteMe.git'
+Plug 'Valloric/YouCompleteMe'
+Plug 'mbbill/undotree'
+
+call plug#end()
+
+let mapleader = " "
+
+nnoremap <Leader>gd :YcmCompleter GoTo<CR>
+"nnoremap <Leader>gf :YcmCompleter FixIt<CR>
+
