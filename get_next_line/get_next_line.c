@@ -35,9 +35,10 @@ int	get_next_line(const int fd, char **line)
 	//aux[1] = ft_strdup(&buff[pos]);
 	pos = 0;
 	*line = aux[1];
-	ft_bzero(buff, BUFFER_SIZE + 1);
+	//ft_bzero(buff, BUFFER_SIZE + 1);
 	if ((ret = read(fd, buff, BUFFER_SIZE)) < 1)
-		return (ret + 0 * (pos = BUFFER_SIZE));
+		return ((BUFFER_SIZE > 0 ? ret : -1) + (pos = BUFFER_SIZE) * 0);
+	buff[ret] = 0;
 	ret = get_next_line(fd, &aux[0]);
 	*line = ft_strjoin(aux[1], aux[0]);
 	free(aux[0]);

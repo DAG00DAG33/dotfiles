@@ -47,6 +47,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i2;
 	char	*ret_str;
 
+	i1 = 0;
+	i2 = 0;
 	while (s1[i1])
 		i1++;
 	while (s2[i2])

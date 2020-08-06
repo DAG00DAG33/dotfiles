@@ -16,7 +16,7 @@ int	main()
 
 	fd = open("files/half_marge_top", O_RDONLY);
 	fd2 = open("files/half_marge_bottom", O_RDONLY);
-	while((ret = get_next_line(fd, &str)))
+	while((ret = get_next_line(fd, &str)) > 0)
 	{
 		ft_putnbr(ret);
 		ft_putstr("\t");
@@ -30,7 +30,7 @@ int	main()
 	ft_putstr("\n");
 	ft_putstr("\n");
 	free(str);
-	while((ret = get_next_line(fd2, &str)))
+	while((ret = get_next_line(fd2, &str)) > 0)
 	{
 		ft_putnbr(ret);
 		ft_putstr("\t");
@@ -45,7 +45,7 @@ int	main()
 	ft_putstr("\n");
 	free(str);
 	fd = open("files/a", O_RDONLY);
-	while((ret = get_next_line(fd, &str)))
+	while((ret = get_next_line(fd, &str)) > 0)
 	{
 		ft_putnbr(ret);
 		ft_putstr("\t");

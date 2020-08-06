@@ -21,7 +21,7 @@ t_buffer	*new_buffer(int fd)
 ** return the t_list element
 */
 
-t_list	*find_buff(t_list *lst, const int fd)
+t_list	*fbf(t_list *lst, const int fd)
 {
 	while (lst)
 	{
@@ -42,7 +42,7 @@ t_buffer	*get_buffer(t_list **lst, const int fd)
 {
 	t_list			*l;
 
-	if (!lst || !(l = find_buff(*lst, fd)))
+	if (!lst || !(l = fbf(*lst, fd)))
 	{
 		l = ft_lstnew(new_buffer(fd));
 		l->next = *lst;
@@ -71,10 +71,12 @@ int	get_next_line(const int fd, char **line)
 	b->pos = 0;
 	//ft_bzero(b->buff, BUFFER_SIZE + 1);
 	if ((ret = read(b->fd, b->buff, BUFFER_SIZE)) < 1)
-		return (0 * !ft_lstdel(&lst, find_buff(lst, fd)) + ret);
+		return (!ft_lstdel(&lst, fbf(lst, fd)) * 0 + BUFFER_SIZE < 1 ? -1 : ret);
 	b->buff[ret] = 0;
 	ret = get_next_line(b->fd, &aux[1]);
 	*line = ft_strjoin(aux[0], aux[1]);
+	free(aux[0]);
+	free(aux[1]);
 	return (ret);
 }
 
