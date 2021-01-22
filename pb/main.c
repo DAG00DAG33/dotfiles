@@ -6,14 +6,11 @@
 
 int main()
 {
-	char *str = strdup("567890");
-	//printf("%s", str);
-	for(int i = 0; i < strlen(str); i++)
-		printf("%d", str[i] - '0');
-	printf("\n");
-	mult_str(&str, 2);
-	for(int i = 0; i < strlen(str); i++)
-		printf("%d", str[i] - '0');
+	char *str = strdup("567899");
+	printf("%s\n", str);
+	mlt_pow_str(&str, 2, 10);
+	printf("%s\n", str);
 
-	//ft_printf("%s", mult)
+	double f = 0.3;
+	ft_print_float_info(f);
 }
