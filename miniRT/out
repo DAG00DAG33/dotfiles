@@ -1,0 +1,41 @@
+main.c: In function ‘main’:
+main.c:34:2: warning: implicit declaration of function ‘print_pline’ [-Wimplicit-function-declaration]
+  print_pline(&l);
+  ^
+geometry/distance.c: In function ‘dis_po_pl’:
+geometry/distance.c:17:9: warning: implicit declaration of function ‘fabs’ [-Wimplicit-function-declaration]
+  return(fabs(dot_product(pl.vec, *(t_vector*)&po) + d));
+         ^
+geometry/distance.c:17:9: warning: incompatible implicit declaration of built-in function ‘fabs’
+geometry/distance.c:17:9: note: include ‘<math.h>’ or provide a declaration of ‘fabs’
+geometry/line.c: In function ‘new_line’:
+geometry/line.c:10:8: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+  new = malloc(sizeof(t_line));
+        ^
+geometry/line.c:10:8: warning: incompatible implicit declaration of built-in function ‘malloc’
+geometry/line.c:10:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+geometry/plane.c: In function ‘new_plane’:
+geometry/plane.c:10:8: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+  new = malloc(sizeof(t_plane));
+        ^
+geometry/plane.c:10:8: warning: incompatible implicit declaration of built-in function ‘malloc’
+geometry/plane.c:10:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+geometry/point.c: In function ‘new_point’:
+geometry/point.c:7:8: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+  new = malloc(sizeof(t_point));
+        ^
+geometry/point.c:7:8: warning: incompatible implicit declaration of built-in function ‘malloc’
+geometry/point.c:7:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+geometry/vector.c: In function ‘new_vector’:
+geometry/vector.c:7:8: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+  new = malloc(sizeof(t_vector));
+        ^
+geometry/vector.c:7:8: warning: incompatible implicit declaration of built-in function ‘malloc’
+geometry/vector.c:7:8: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+geometry/vector_operations.c: In function ‘norm’:
+geometry/vector_operations.c:33:6: warning: implicit declaration of function ‘abs’ [-Wimplicit-function-declaration]
+  if (abs(mod - 1) < 1e-8)
+      ^
+/tmp/cc4K3rwW.o: In function `main':
+main.c:(.text+0xe3): undefined reference to `print_pline'
+collect2: error: ld returned 1 exit status

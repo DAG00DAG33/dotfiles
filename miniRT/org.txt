@@ -1,0 +1,88 @@
+Geomety
+Shape
+Figure
+Parser
+
+
+Figure
+	-> center:	point
+	-> radius:	float
+	-> color:	color
+	-> reflec:	float
+	-> trans:	flaot
+	-> type:	enum
+	-> shape:	shape*
+
+	-> interseccion(ray)
+
+
+Shape
+	-> Sphere:		point, float
+	-> Triangle:	point, point, point
+	-> Plane:		point, vector
+	-> Square:		point, vector, float
+	-> Cylinder:	point, vector, float, float
+
+	-> interseccion(ray)
+
+
+Geometry
+	-> Plane: point, vector
+	-> Line:  point, vector
+	-> Point
+	-> Vector
+
+	-> plane-line intersection
+	-> point-line intersection
+	-> line-line intersection	???
+
+	-> point-point distance_str
+	-> point-plane distance_sqr
+	-> point-line distance_sqr
+
+	-> point-point separation
+	-> point-line separation
+	-> point-plane separation
+
+
+
+struct intersection
+	-> point
+	-> distance
+	-> color
+	-> normal
+
+
+geometry/
+	plane
+	point
+	ray
+	vector
+	vector_operations
+	distance
+	separation
+	intersection
+
+shape/
+	shpere
+	...
+
+	intersect_shape(sh, ray)
+
+figure/
+	figure()
+	new_figure()
+	check_intersection(*figure, ray)
+		//get_intersections(ray)
+
+parser/
+	
+main/
+	figure_iter(ray)
+	ray_iter()
+	light_calculation()
+	
+for ray in ray_iter:
+	for figure in figure_iter:
+		if check_intersection(*figure, ray).distance < inter.distance
+			inter = _____;
