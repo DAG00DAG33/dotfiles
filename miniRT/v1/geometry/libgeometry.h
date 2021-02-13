@@ -49,12 +49,13 @@ t_ray		ray(t_point po, t_vector vec);
 float		inter_pl_r(t_plane pl, t_ray r); //hecer que solo lo haga si es delante???
 //t_point		inter_po_l(t_point po, t_line l);
 
-float		dis_sqr_po_po(t_point po1, t_point po2);
+float		dis_sq_po_po(t_point po1, t_point po2);
 float		dis_po_pl(t_point po, t_plane pl);
-float		dis_sqr_po_r(t_point po, t_ray ray);
+float		dis_sq_po_r(t_point po, t_ray ray);
 
 t_vector*	norm(t_vector *vec);
-float		mod_sqr(t_vector v);
+t_vector	normalize(t_vector vec);
+float		mod_sq(t_vector v);
 float		mod(t_vector v);
 float		dot_product(t_vector vec1, t_vector vec2);
 t_vector	cross_product(t_vector vec1, t_vector vec2);

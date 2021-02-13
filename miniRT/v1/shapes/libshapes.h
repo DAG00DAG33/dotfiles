@@ -20,6 +20,7 @@ typedef	struct		s_triangle
 t_sphere	sphere(t_point po, float r);
 t_sphere*	new_sphere(t_point po, float r);
 float		intersect_sphere(t_sphere *sp, t_ray ray);
-t_vector	normal_shpere(t_shpere *sp, t_point po);
+t_vector	normal_sphere(t_sphere *sp, t_point po);
+void		print_sphere(t_sphere *sp);
 
 #endif

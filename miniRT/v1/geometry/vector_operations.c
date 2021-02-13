@@ -1,7 +1,7 @@
 #include "libgeometry.h"
 #include <math.h>
 
-inline float		mod_sqr(t_vector vec)
+inline float		mod_sq(t_vector vec)
 {
 	return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 }
@@ -9,7 +9,7 @@ inline float		mod_sqr(t_vector vec)
 /*1*/
 inline float		mod(t_vector vec)
 {
-	return (sqrt(mod_sqr(vec)));
+	return (sqrt(mod_sq(vec)));
 }
 
 inline float		dot_product(t_vector v1, t_vector v2)
@@ -24,21 +24,34 @@ inline t_vector		cross_product(t_vector v1, t_vector v2)
 					v1.x * v2.y - v2.x * v1.y));
 }
 
-/*4*/
+/*2*/
 t_vector*	norm(t_vector *vec)
 {
-	float size;
+	float Qsize;
 
-	size = mod(*vec);
-	if (fabs(size - 1.0) < 1e-5)
+	Qsize = 1 / mod(*vec);
+	if (fabs((1 / Qsize) - 1.0) < 1e-5)
 		printf("HAY UNA NORMALIZACION EXTRA");
-	vec->x /= size;
-	vec->y /= size;
-	vec->z /= size;
+	vec->x *= Qsize;
+	vec->y *= Qsize;
+	vec->z *= Qsize;
 	return (vec);
 }
 
+t_vector	normalize(t_vector vec)
+{
+	float Qsize;
 
+	Qsize = 1 / mod(vec);
+	if (fabs((1 / Qsize) - 1.0) < 1e-5)
+		printf("HAY UNA NORMALIZACION EXTRA");
+	vec.x *= Qsize;
+	vec.y *= Qsize;
+	vec.z *= Qsize;
+	return (vec);
+}
+
+/*2*/
 float		angle_vectors(t_vector vec1, t_vector vec2)
 {
 	return (acos(dot_product(vec1, vec2) / (mod(vec1) * mod(vec2))));

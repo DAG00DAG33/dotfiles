@@ -1,11 +1,8 @@
 #include <string.h>
 #include <math.h>
 #include "utils.c"
+#include "ft_litoa.c"
 
-char	*ft_ftoa(float f, int precission)
-{
- return NULL;
-}
 
 char	*mult_str(char **str, int mul)
 {
@@ -62,6 +59,7 @@ char	*mlt_pow_str(char **str, int mul, int pow)
 	unsigned long long i;
 	double f;
 }	u;
+
 void	ft_print_float_info(float f)
 {
 	union u_funion u;
@@ -70,6 +68,33 @@ void	ft_print_float_info(float f)
 	m1 = (u.i & 0x000fffffffffffff) + pow(2 ,52);
 	e1 = ((u.i & 0xfff0000000000000) >> 52);
 	printBits(&u.f, sizeof(u.f));
-	printBits(&u.i, sizeof(u.i));
-	printf("m1: %d, e1: %d", m1, e1);
+	printBits(&m1, sizeof(m1));
+	printf("m1: %li, e1: %li", m1, e1);
 }
+
+void	ft_putstr(char *str)
+{
+	while(*str)
+		write(1, str++, 1);
+}
+
+char	*ft_ftoa(float f, int precission)
+{
+	union u_funion u;
+	long long m1_num;
+	int e1, e2;
+	char *m1;
+	u.f = f;
+	m1_num = (u.i & 0x000fffffffffffff) + pow(2 ,52);
+	m1 = ft_litoa(m1_num);
+	e1 = ((u.i & 0xfff0000000000000) >> 52);
+	e2 = e1 - 1023 - 52;
+	printf("%li", m1_num);
+	printf("\n%s, %i\n", m1, e2);
+	if (e2 >= 0)
+		mlt_pow_str(&m1, 2, e2);
+	else
+		mlt_pow_str(&m1, 5, -e2);
+	return m1;
+}
+

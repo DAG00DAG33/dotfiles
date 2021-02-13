@@ -2,7 +2,9 @@
 #include "shapes/libshapes.h"
 #include <math.h>
 
+
 t_vector*	norm(t_vector *vec);
+
 
 int main()
 {
@@ -29,12 +31,12 @@ int main()
 
 	t_sphere sp = sphere(point(7, 4, -3), 10);
 	t_ray r = ray(point(-1, -10, -30), vector(1, 3, 4));
+	print_sphere(&sp);
 	print_ray(&r);
-	float t = intersect_sphere(sp, r);
+	float t = intersect_sphere(&sp, r);
 	printf("t: %f\n", t);
 	t_point po = point_plus_vec(r.po, t, r.vec);
 	print_point(&po);
-
 
 
 }
