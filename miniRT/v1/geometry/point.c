@@ -1,6 +1,6 @@
 #include "libgeometry.h"
 
-t_point		*new_point(float x, float y, float z)
+t_point		*new_point(double x, double y, double z)
 {
 	t_point* new;
 
@@ -12,7 +12,7 @@ t_point		*new_point(float x, float y, float z)
 	return (new);
 }
 
-t_point		point(float x, float y, float z)
+t_point		point(double x, double y, double z)
 {
 	t_point new;
 

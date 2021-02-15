@@ -2,7 +2,7 @@
 #include "../geometry/libgeometry.h"
 #include <math.h>
 
-float		dis_sq_po_po(t_point po1, t_point po2);
+double		dis_sq_po_po(t_point po1, t_point po2);
 
 t_sphere	sphere(t_point po, float r)
 {

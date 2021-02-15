@@ -1,6 +1,6 @@
 #include "libgeometry.h"
 
-t_vector	*new_vector(float x, float y, float z)
+t_vector	*new_vector(double x, double y, double z)
 {
 	t_vector* new;
 
@@ -11,7 +11,7 @@ t_vector	*new_vector(float x, float y, float z)
 	return (new);
 }
 
-t_vector	vector(float x, float y, float z)
+t_vector	vector(double x, double y, double z)
 {
 	t_vector new;
 

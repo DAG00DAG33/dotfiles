@@ -77,12 +77,35 @@ figure/
 
 parser/
 	
-main/
+src/
 	figure_iter(ray)
 	ray_iter()
 	light_calculation()
+
+display/
+	draw(t_color screen[WIDTH][HEIGHT])
 	
-for ray in ray_iter:
-	for figure in figure_iter:
-		if check_intersection(*figure, ray).distance < inter.distance
-			inter = _____;
+
+
+	
+
+
+----------------------------------------------------------------------------------------------------------
+
+geometry/		-->libgeometry.h
+	t_point		->vector.c
+	t_vector	->vector.c	->vector_operationsc
+	t_ray		->ray.c
+	t_plane		->plane.c
+
+
+shapes/			-->libshapes.h
+	t_sphere	->shpere.c
+	t_triangle
+
+figure/			-->figure.h
+	t_color		->color.c
+	t_figure	->figure.c
+	t_inter
+
+

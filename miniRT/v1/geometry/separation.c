@@ -10,7 +10,7 @@ t_vector	sep_po_po(t_point po2, t_point po1)
 /*0*/
 t_vector	sep_po_pl(t_point po, t_plane pl)
 {
-	float d, dist;
+	double d, dist;
 
 	d = - dot_product(pl.vec, *(t_vector*)&pl.po);
 	dist = (dot_product(pl.vec, *(t_vector*)&po) + d);
