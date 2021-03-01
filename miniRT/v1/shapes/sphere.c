@@ -1,5 +1,6 @@
 #include "libshapes.h"
 #include "../geometry/libgeometry.h"
+#include "../figure/figure.h"
 #include <math.h>
 
 double		dis_sq_po_po(t_point po1, t_point po2);

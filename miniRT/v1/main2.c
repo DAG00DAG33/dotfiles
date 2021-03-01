@@ -27,10 +27,25 @@ int main()
 	draw(arr, width, height);*/
 
 
-	t_ray *ray;
+	/*t_ray *ray;
 	t_camera cam;
 	cam = camera(point(3, 3, 3), vector(-1, 3, 4), 100);
 
 	while ((ray = ray_iter(cam, 1080, 1920)))
 		;//print_ray(ray);
+	*/
+
+	t_camera cam;
+	cam = camera(point(0, 1, 1), vector(1, 1, 1.3), 100);
+
+	t_figure *data[10];
+	data[0] = new_figure(new_sphere(point(3, 3, 3), 2), sp, color(100, 100, 100));
+	data[1] = new_figure(new_sphere(point(3, 4, 5), 4), sp, color(0, 100, 100));
+	data[2] = NULL;
+
+	t_figure *fig;
+	while (fig = figure_iter(data, NULL))
+		print_figure(fig);
+
+	main_loop(data, camera);
 }

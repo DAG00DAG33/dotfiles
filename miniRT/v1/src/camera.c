@@ -1,4 +1,6 @@
 #include "src.h"
+#include <math.h>
+
 
 /*2*/
 t_camera	camera(t_point po, t_vector vec, float fov)

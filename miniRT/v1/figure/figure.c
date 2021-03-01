@@ -9,7 +9,7 @@ t_figure	figure(void *sp, int type, t_color col)
 	new.shape= sp;
 	new.center = ((t_sphere *)sp)->po;
 	new.radius = ((t_sphere *)sp)->r;
-	new.type = type;
+	new.typ = type;
 	return (new);
 }
 
@@ -23,6 +23,24 @@ t_figure	*new_figure(void *sp, int type, t_color col)
 	new->shape= sp;
 	new->center = ((t_sphere *)sp)->po;
 	new->radius = ((t_sphere *)sp)->r;
-	new->type = type;
+	new->typ = type;
 	return (new);
 }
+
+
+void		print_figure(t_figure *fig)
+{
+	printf("figure: type(%d) --> ", fig->typ);
+	(g_figures[fig->typ].print)(fig->shape);
+	printf("\tcolor: %d, %d, %d\n", fig->color.R, fig->color.G, fig->color.B);
+	//print_sphere((t_sphere *)fig->shape);
+}
+
+t_figure	*figure_iter(t_figure **data, t_ray *ray)
+{
+	static i = 0;
+
+	printf("\n%d\n", i);
+	return data[i++];
+}
+
