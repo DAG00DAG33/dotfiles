@@ -38,13 +38,14 @@ t_vector*	norm(t_vector *vec)
 	return (vec);
 }
 
+/*2*/
 t_vector	normalize(t_vector vec)
 {
 	double Qsize;
 
 	Qsize = 1 / mod(vec);
 	if (fabs((1 / Qsize) - 1.0) < 1e-5)
-		printf("HAY UNA NORMALIZACION EXTRA");
+		;//printf("HAY UNA NORMALIZACION EXTRA");
 	vec.x *= Qsize;
 	vec.y *= Qsize;
 	vec.z *= Qsize;

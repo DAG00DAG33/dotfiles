@@ -26,19 +26,21 @@ t_sphere*	new_sphere(t_point po, float r)
 }
 
 /*2*/
-float	intersect_sphere(t_sphere *sp, t_ray ray)
+double	intersect_sphere(t_sphere *sp, t_ray ray)
 {
 	float d_sq;
 	float a, b;
 
-	if((d_sq = dis_sq_po_r(sp->po, ray)) > sp->r * sp->r)
+	if((d_sq = dis_sq_po_r(sp->po, ray)) > (sp->r * sp->r))
 		return INFINITY;
+	//printf("d_sq: %f, r_sq:%f\n",  d_sq, sp->r * sp->r);
 	a = sqrt(dis_sq_po_po(ray.po, sp->po) - d_sq);
 	b = sqrt(sp->r * sp->r - d_sq);
-	//printf("d: %f\n",  d_sq);
-	//printf("a: %f, b: %f\n", a, b);
+	//printf("a: %f, b: %f, a - b:%f\n", a, b, a - b);
 	//check
-	if (fabs(dis_sq_po_po(point_plus_vec(ray.po, a - b, ray.vec), sp->po) - sp->r * sp->r) > 1e-5)
+	//if (fabs(dis_sq_po_po(point_plus_vec(ray.po, a - b, ray.vec), sp->po) - sp->r * sp->r) > 1e-5)
+	if (dis_sq_po_po(point_plus_vec(ray.po, a - b, ray.vec), sp->po) > sp->r * sp->r)
+	if(dot_product(ray.vec, sep_po_po(sp->po, ray.po)) < 0)
 		return INFINITY;
 	return (a - b);
 }

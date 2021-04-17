@@ -22,5 +22,9 @@ double		dis_po_pl(t_point po, t_plane pl)
 /*0*/
 double		dis_sq_po_r(t_point po, t_ray r)
 {
-	return (mod_sq(cross_product(sep_po_po(po, r.po), r.vec)));
+
+	float f = mod_sq(cross_product(sep_po_po(po, r.po), r.vec));
+	//print_ray(&r);
+	//printf("f: %f\n", f);
+	return (f);
 }

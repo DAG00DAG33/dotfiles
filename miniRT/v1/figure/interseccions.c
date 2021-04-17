@@ -14,7 +14,7 @@
 	return inter;
 }*/
 
-t_inter calc_intersec(t_figure *fig, t_ray ray, float dis, short normal)
+/*t_inter calc_intersec(t_figure *fig, t_ray ray, float dis, short normal)
 {
 		t_inter inter;
 
@@ -26,4 +26,6 @@ t_inter calc_intersec(t_figure *fig, t_ray ray, float dis, short normal)
 			inter.normal = normal_sphere(fig->shape, inter.point);
 		inter.color = fig->color;
 		return inter;
-}
+}*/
+
+/*  QUIZAS HAY QUE HACER NEW FREE Y ESAS COSAS   */

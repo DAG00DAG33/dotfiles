@@ -62,5 +62,7 @@ t_figure	*figure_iter(t_figure **data, t_ray *ray);
 
 //t_color  	calculate_light(t_inter *inter, t_light **lights);
 
+void	print_color(t_color col);
+
 #endif
 

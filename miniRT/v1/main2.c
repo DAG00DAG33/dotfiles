@@ -36,16 +36,23 @@ int main()
 	*/
 
 	t_camera cam;
-	cam = camera(point(0, 1, 1), vector(1, 1, 1.3), 100);
+	cam = camera(point(0, 1, 1), vector(1.3, 1, 1.3), 100);
 
 	t_figure *data[10];
-	data[0] = new_figure(new_sphere(point(3, 3, 3), 2), sp, color(100, 100, 100));
-	data[1] = new_figure(new_sphere(point(3, 4, 5), 4), sp, color(0, 100, 100));
-	data[2] = NULL;
+	data[0] = new_figure(new_sphere(point(300, 300, 300), 200), sp, color(100, 100, 100));
+	data[1] = new_figure(new_sphere(point(100, 400, 500), 100), sp, color(0, 100, 100));
+	data[2] = new_figure(new_sphere(point(1, 6, 2), 1), sp, color(100, 0, 100));
+	data[3] = new_figure(new_sphere(point(9, 2, 5), 1.3), sp, color(0, 100, 0));
+	data[4] = new_figure(new_sphere(point(7, 4, 5), 0.3), sp, color(100, 100, 0));
+	data[5] = NULL;
+
+	t_light	*lights[2];
+	lights[0] = new_light(point(10, 10, 10), 1);
+	lights[1] = NULL;
 
 	t_figure *fig;
 	while (fig = figure_iter(data, NULL))
 		print_figure(fig);
 
-	main_loop(data, camera);
+	main_loop(data, cam, lights);
 }

@@ -33,14 +33,20 @@ void		print_figure(t_figure *fig)
 	printf("figure: type(%d) --> ", fig->typ);
 	(g_figures[fig->typ].print)(fig->shape);
 	printf("\tcolor: %d, %d, %d\n", fig->color.R, fig->color.G, fig->color.B);
-	//print_sphere((t_sphere *)fig->shape);
 }
 
 t_figure	*figure_iter(t_figure **data, t_ray *ray)
 {
 	static i = 0;
 
-	printf("\n%d\n", i);
-	return data[i++];
+	//printf("\n%d\n", i);
+	if (data[i] == 0)
+	{
+		i = 0;
+		return NULL;
+	}
+	else
+		return data[i++];
+	//return (NULL);
 }
 
