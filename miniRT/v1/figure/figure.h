@@ -35,6 +35,7 @@ typedef	struct		s_inter
 	t_point			point;
 	t_vector		normal;
 	t_color			color;
+	t_figure		*figure;
 }					t_inter;
 
 typedef	struct		s_figure_function

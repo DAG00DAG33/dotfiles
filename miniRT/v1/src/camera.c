@@ -63,7 +63,7 @@ t_ray   *ray_iter(t_camera camera, int height, int width)
 	dis = width / (2 * tan((camera.fov * 3.1492) / 360));
 	vec = normalize(vector((float) x - width / 2, (float) y - height / 2, - dis)); //quizas se puede quitar  el normalize
 	new_ray = ray(camera.po, lookAt(camera, vec));
-	if (x == 0 && y == 0)
+	/*if (x == 0 && y == 0)
 		//print_ray(&new_ray);
 		print_vector(&vec);
 	if (x == 0 && y == height-1)
@@ -77,6 +77,6 @@ t_ray   *ray_iter(t_camera camera, int height, int width)
 		print_vector(&vec);
 	if (x == (width/2) && y == (height/2))
 		//print_ray(&new_ray);
-		print_vector(&vec);
+		print_vector(&vec);*/
 	return (&new_ray);
 }

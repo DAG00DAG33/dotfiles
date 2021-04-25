@@ -1,9 +1,10 @@
 #include "../figure/figure.h"
 #include "src.h"
+#include <time.h>
 
 void	print_color(t_color col);
 
-t_inter *calc_intersections(t_ray ray, t_figure **data)
+/*t_inter *calc_intersections(t_ray ray, t_figure **data)
 {
 	t_inter		*inter, *new_inter;
 	t_figure	*figure;
@@ -19,25 +20,43 @@ t_inter *calc_intersections(t_ray ray, t_figure **data)
 			inter = new_inter;
 		}
 	return inter;
+}*/
+t_inter calc_intersections(t_ray ray, t_figure **data)
+{
+	t_inter		inter, new_inter;
+	t_figure	*figure;
+
+	//if (!(inter = (t_inter *)malloc(sizeof(t_inter))))
+		//return (NULL);
+	inter.dis = INFINITY;
+	inter.color = color(0, 0, 0);//BACKGROUND_COLOR
+	while(figure = figure_iter(data, NULL))
+	{
+		new_inter = calc_one_intersec(figure, ray, inter.dis, 1);
+		if (new_inter.dis < inter.dis)
+			inter = new_inter;
+	}
+	return inter;
 }
 
-t_inter *calc_one_intersec(t_figure *fig, t_ray ray, float dis, short normal)
+t_inter calc_one_intersec(t_figure *fig, t_ray ray, float dis, short normal)
 {
-	t_inter *inter;
+	t_inter inter;
 
-	if (!(inter = (t_inter *)malloc(sizeof(t_inter))))
-		return (NULL);
+	//if (!(inter = (t_inter *)malloc(sizeof(t_inter))))
+		//return (NULL);
 	//ajustar a cualquier fugura, o solo esfera
-	inter->dis = intersect_sphere((t_sphere *)fig->shape, ray);
-	if (inter->dis >= dis || isinf(inter->dis))
+	inter.dis = intersect_sphere((t_sphere *)fig->shape, ray);
+	if (inter.dis >= dis || isinf(inter.dis))
 	{
-		free(inter);
-		return NULL;
+		return (inter);
+		//free(inter);
+		//return NULL;
 	}
-	inter->point = point_plus_vec(ray.po, inter->dis, ray.vec);
-	if (normal)
-		inter->normal = normal_sphere(fig->shape, inter->point);
-	inter->color = fig->color;
+	inter.point = point_plus_vec(ray.po, inter.dis, ray.vec);
+	//if (normal)
+	inter.figure = fig;
+	inter.color = fig->color;
 	//printf("intersection made with color %d, %d, %d\n", fig->color.R, fig->color.G, fig->color.B);
 	return inter;
 }
@@ -48,6 +67,11 @@ void	main_loop(t_figure **data, t_camera camera, t_light **lights)
 	int x, y;
 	int width = 1920, height = 1080;
 	t_ray *ray;
+
+	clock_t start, end;
+    double cpu_time_used;
+
+    start = clock();
 
 	arr = malloc(sizeof(*arr) * width);
 	for (int i = 0; i < width ; i++)
@@ -66,5 +90,7 @@ void	main_loop(t_figure **data, t_camera camera, t_light **lights)
 			y++;
 		}
 	}
+	end = clock();
+	printf("time used: %f\n", ((double) (end - start)));
 	draw(arr, width, height);
 }

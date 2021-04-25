@@ -1,6 +1,6 @@
 #include "src.h"
 
-t_color   calculate_light(t_inter *inter, t_light **lights)
+t_color   calculate_light(t_inter inter, t_light **lights)
 {
 	int i;
 	t_color col;
@@ -16,10 +16,16 @@ t_color   calculate_light(t_inter *inter, t_light **lights)
 	}
 	return gcolor(inter.color.R*col.R, ...);*/
 	//float f = dot_product(inter->normal, normalize(sep_po_po(point(10, 10, 10), inter->point)));
-	float f = dot_product(inter->normal, normalize(sep_po_po(lights[0]->po, inter->point)));
-	if (f < 0.2)
-		f = 0.2;
-	return color(inter->color.R * f, inter->color.G * f, inter->color.B * f);
+	float f = 1;
+
+	if (inter.figure)
+	{
+		inter.normal = normal_sphere(inter.figure->shape, inter.point);
+		f = dot_product(inter.normal, normalize(sep_po_po(lights[0]->po, inter.point)));
+		if (f < 0.2)
+			f = 0.2;
+	}
+	return color(inter.color.R * f, inter.color.G * f, inter.color.B * f);
 }
 
 t_light	light(t_point po, float l)
